@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>BMI</h2>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #222;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0 20px;
+      }
+      h2 {
+        color: azure;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+      input {
+        padding: 5px 8px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+      }
+      button {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        width: 100px;
+        margin: 10px 0;
+      }
+    </style>
+    <div
+      style="
+        text-align: center;
+        background: #333;
+        border-radius: 5px;
+        padding: 10px;
+        line-height: 1.9;
+      "
+    >
+      <div>
+        <h3>weight</h3>
+        <input type="number" placeholder="Enter your weight" id="weight" />
+      </div>
+
+      <div>
+        <h3>height</h3>
+        <input type="number" placeholder="Enter your height" id="height" />
+      </div>
+
+      <button id="submit" style="cursor: pointer; padding: 5px 10px">
+        calc
+      </button>
+      <div>
+        <h4 id="bmi"></h4>
+        <h3 id="bmi-category"></h3>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("submit").onclick = function calc() {
+        let weight = document.getElementById("weight").value;
+
+        let height = document.getElementById("height").value;
+
+        let bmi = weight / (height * height);
+        let finalResult = document.getElementById("bmi-category");
+
+        let bmiResult = (document.getElementById("bmi").innerHTML = bmi);
+        if (weight == "" || height == "" || bmi === NaN) {
+          bmiResult.innerHTML = "Please enter the values ";
+          finalResult.innerHTML = "Please enter the values ";
+        } else if (bmi < 18) {
+          finalResult.innerHTML = "Skinny";
+        } else if (bmi < 24.9) {
+          finalResult.innerHTML = "Ideal weight";
+        } else if (bmi < 29.9) {
+          finalResult.innerHTML = "Excess weight";
+        } else if (bmi < 34.9) {
+          finalResult.innerHTML = "First degree obesity";
+        } else if (bmi < 39.9) {
+          finalResult.innerHTML = "Obesity of the second degree";
+        } else {
+          finalResult.innerHTML = "Obesity of a serious degreet";
+        }
+      };
+    </script>
+  </body>
+</html>
